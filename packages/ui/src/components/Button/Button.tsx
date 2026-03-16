@@ -34,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ref={ref}
       className={buttonVariants({ variant, size })}
       {...props}
-    />
+    >123123</button>
   )
 );
 

@@ -8,6 +8,7 @@
   "dependencies": {
     "@easy/ui": "workspace:*",
     "@tailwindcss/vite": "^4.1.8",
+    "class-variance-authority": "^0.7.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tailwindcss": "^4.1.8"
