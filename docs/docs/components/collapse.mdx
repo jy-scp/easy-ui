@@ -1,0 +1,77 @@
+import { Collapse } from '@easy/ui'
+
+# Collapse
+
+Headless Collapse 组件，通过 render prop 注入状态，样式完全由你控制。
+
+## 预览
+
+export const CollapseDemo = () => (
+  <Collapse accordion>
+    <Collapse.Panel itemKey="1">
+      {({ isOpen, toggle }) => (
+        <div style={{ border: '1px solid #eee', borderRadius: '6px', marginBottom: '8px', overflow: 'hidden' }}>
+          <div onClick={toggle} style={{ padding: '12px 16px', background: '#f9f9f9', cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+            <span>面板 1</span>
+            <span>{isOpen ? '▲' : '▼'}</span>
+          </div>
+          {isOpen && <div style={{ padding: '12px 16px' }}>这是面板 1 的内容。</div>}
+        </div>
+      )}
+    </Collapse.Panel>
+    <Collapse.Panel itemKey="2">
+      {({ isOpen, toggle }) => (
+        <div style={{ border: '1px solid #eee', borderRadius: '6px', overflow: 'hidden' }}>
+          <div onClick={toggle} style={{ padding: '12px 16px', background: '#f9f9f9', cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+            <span>面板 2</span>
+            <span>{isOpen ? '▲' : '▼'}</span>
+          </div>
+          {isOpen && <div style={{ padding: '12px 16px' }}>这是面板 2 的内容。</div>}
+        </div>
+      )}
+    </Collapse.Panel>
+  </Collapse>
+)
+
+<CollapseDemo />
+
+## 基本用法
+
+```tsx
+import { Collapse } from '@easy/ui'
+
+<Collapse accordion>
+  <Collapse.Panel itemKey="1">
+    {({ isOpen, toggle }) => (
+      <div>
+        <button onClick={toggle}>{isOpen ? '收起' : '展开'}</button>
+        {isOpen && <div>面板内容</div>}
+      </div>
+    )}
+  </Collapse.Panel>
+</Collapse>
+```
+
+## API
+
+### `<Collapse>`
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `accordion` | `boolean` | `false` | 手风琴模式，同时只展开一个面板 |
+| `defaultActiveKeys` | `string[]` | `[]` | 默认展开的面板 key |
+
+### `<Collapse.Panel>`
+
+| 属性 | 类型 | 描述 |
+|------|------|------|
+| `itemKey` | `string` | 面板唯一标识 |
+| `children` | `(props) => ReactNode` | Render prop，注入 `isOpen`、`toggle`、`getButtonProps` |
+
+#### Render prop 参数
+
+| 参数 | 类型 | 描述 |
+|------|------|------|
+| `isOpen` | `boolean` | 当前面板是否展开 |
+| `toggle` | `() => void` | 切换展开/收起 |
+| `getButtonProps` | `() => object` | 返回触发按钮的无障碍属性（`aria-expanded`、`onClick`） |

@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useModalContext } from "./useModalContext";
 
-export const ModalContent = ({ 
-  children, 
-  className 
-}: { 
+export const ModalContent = ({
+  children,
+  className,
+  style
+}: {
   children: React.ReactNode
-  className?: string 
+  className?: string
+  style?: React.CSSProperties
 }) => {
   const { setIsOpen } = useModalContext();
 
@@ -25,7 +27,7 @@ export const ModalContent = ({
   }, [setIsOpen]);
 
   return (
-    <div role="dialog" aria-modal="true" className={className}>
+    <div role="dialog" aria-modal="true" className={className} style={style}>
       {children}
     </div>
   );

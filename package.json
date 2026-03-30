@@ -12,10 +12,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pnpm --filter playground run dev",
-    "dev:docs": "pnpm --filter docs run docs:dev",
+    "dev:docs": "pnpm --filter docs run dev",
     "dev:all": "pnpm -r --parallel run dev --filter playground run dev & pnpm --filter docs run docs:dev",
-    "build": "pnpm --filter ui run build",
-    "build:docs": "pnpm --filter docs run docs:build"
+    "build": "pnpm --filter @easy/ui run build",
+    "build:docs": "pnpm --filter docs run build"
   },
   "keywords": [],
   "author": "",

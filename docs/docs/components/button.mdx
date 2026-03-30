@@ -1,0 +1,33 @@
+import { Button } from '@easy/ui'
+
+# Button
+
+## 预览
+
+<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', padding: '16px', border: '1px solid #eee', borderRadius: '8px' }}>
+  <Button variant="default">Default</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+  <Button disabled>Disabled</Button>
+</div>
+
+## 基本用法
+
+```tsx
+import { Button } from '@easy/ui'
+
+<Button variant="default">Default</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+```
+
+## API
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `variant` | `'default' \| 'outline' \| 'ghost'` | `'default'` | 按钮样式变体 |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | 按钮大小 |
+| `disabled` | `boolean` | `false` | 是否禁用 |

@@ -1,0 +1,108 @@
+import { useState } from 'react'
+import { Modal, useModalContext } from '@easy/ui'
+
+# Modal
+
+Headless Modal 组件，只提供逻辑，样式完全由你控制。
+
+## 预览
+
+export const DemoOpenButton = () => {
+  const { setIsOpen } = useModalContext()
+  return (
+    <button onClick={() => setIsOpen(true)} style={{ padding: '8px 16px', background: 'orange', border: 'none', borderRadius: '6px', cursor: 'pointer', color: '#fff' }}>
+      打开 Modal
+    </button>
+  )
+}
+
+export const DemoModalBody = () => {
+  const { setIsOpen } = useModalContext()
+  return (
+    <>
+      <h3 style={{ marginBottom: '12px' }}>Modal 标题</h3>
+      <p style={{ marginBottom: '16px', color: '#666' }}>点击关闭按钮或按 ESC 关闭。</p>
+      <button onClick={() => setIsOpen(false)} style={{ padding: '8px 16px', background: 'orange', border: 'none', borderRadius: '4px', cursor: 'pointer', color: '#fff' }}>
+        关闭
+      </button>
+    </>
+  )
+}
+
+export const ModalDemo = () => (
+  <Modal>
+    <DemoOpenButton />
+    <Modal.Portal>
+      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)' }} />
+      <Modal.Content style={{
+        position: 'fixed', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)',
+        background: '#fff', padding: '24px', borderRadius: '8px', width: '360px'
+      }}>
+        <DemoModalBody />
+      </Modal.Content>
+    </Modal.Portal>
+  </Modal>
+)
+
+<ModalDemo />
+
+## 基本用法
+
+```tsx
+import { Modal, useModalContext } from '@easy/ui'
+
+const Trigger = () => {
+  const { setIsOpen } = useModalContext()
+  return <button onClick={() => setIsOpen(true)}>打开</button>
+}
+
+const Content = () => {
+  const { setIsOpen } = useModalContext()
+  return (
+    <div>
+      <p>Modal 内容</p>
+      <button onClick={() => setIsOpen(false)}>关闭</button>
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <Modal>
+      <Trigger />
+      <Modal.Portal>
+        <Modal.Overlay className="fixed inset-0 bg-black/50" />
+        <Modal.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg">
+          <Content />
+        </Modal.Content>
+      </Modal.Portal>
+    </Modal>
+  )
+}
+```
+
+## API
+
+### `<Modal>`
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `defaultOpen` | `boolean` | `false` | 初始是否打开 |
+| `children` | `ReactNode` | - | 子节点 |
+
+### `<Modal.Portal>`
+
+将内容渲染到 `document.body`，避免层叠上下文问题。
+
+### `<Modal.Overlay>`
+
+遮罩层，接受所有 `div` 属性。
+
+### `<Modal.Content>`
+
+对话框容器，支持 ESC 关闭，接受所有 `div` 属性。
+
+### `useModalContext`
+
+在 `<Modal>` 子树内使用，获取 `isOpen` 和 `setIsOpen`。
