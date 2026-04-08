@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@easy/ui": [
-        "../ui/src"
+        "../components/src"
       ]
     },
     "target": "ESNext",
