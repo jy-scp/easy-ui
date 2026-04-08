@@ -7,14 +7,14 @@ export default defineConfig({
   plugins: [tailwindcss(), react()],
   resolve: {
     alias: {
-      '@easy/ui': path.resolve(__dirname, '../ui/src'),
+      '@easy/ui': path.resolve(__dirname, '../components/src'),
     },
   },
   // 🔥 明确 HMR 配置，确保实时更新
   server: {
     watch: {
-      // 监听 ui 包的变化
-      include: ['src/**', '../ui/src/**'],
+      // 监听 components 包的变化
+      include: ['src/**', '../components/src/**'],
     },
   },
 })
