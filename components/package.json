@@ -5,18 +5,24 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist",
-    "test": "echo 'ui'"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "4",
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
+    "jsdom": "^29.0.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tsup": "^6.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^2.1.9"
   },
   "peerDependencies": {
     "@tailwindcss/vite": "^4.1.8",
